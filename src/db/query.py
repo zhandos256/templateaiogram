@@ -1,7 +1,12 @@
 from sqlalchemy import select
 
-from db.config import async_session
-from db.models import User
+from db.config import async_session, engine
+from db.models import User, Base
+
+
+async def init_db():
+    async with engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
 
 
 async def get_all_admins():
