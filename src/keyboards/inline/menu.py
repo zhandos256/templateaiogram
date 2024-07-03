@@ -3,5 +3,5 @@ from aiogram.types import InlineKeyboardButton
 
 async def inline_menu_keyboard():
     builder = InlineKeyboardBuilder()
-    builder.add(InlineKeyboardButton(text='', callback_data=''))
+    builder.add(InlineKeyboardButton(text='Change me', callback_data=' '))
     return builder.as_markup()

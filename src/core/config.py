@@ -15,7 +15,6 @@ from handlers.users import (
 from utils.notify import notify_admins
 from utils.bot_commands import set_bot_commands
 
-
 async def on_startup(bot: Bot):
     await init_db()
     await notify_admins(bot=bot, text='Бот запущен!')
@@ -23,7 +22,6 @@ async def on_startup(bot: Bot):
 
 async def on_shutdown(bot: Bot):
     await notify_admins(bot=bot, text='Бот остановлен!')
-    bot.session.close()
 
 
 async def configure():
@@ -42,7 +40,13 @@ async def configure():
 
     await set_bot_commands(bot=bot)
     await bot.delete_webhook(drop_pending_updates=True)
-    await dp.start_polling(bot)
+    try:
+        await dp.start_polling(bot)
+    except Exception as e:
+         logging.exception(e)
+    finally:
+        await dp.storage.close()
+        await bot.session.close()
 
 
 def main():

@@ -7,7 +7,7 @@ router = Router()
 @router.message(Command('menu'))
 async def menu_msg_handler(msg: types.Message):
     await msg.answer(
-        text='',
+        text='Menu',
         reply_markup=None,
         parse_mode=ParseMode.HTML
     )
@@ -16,7 +16,7 @@ async def menu_msg_handler(msg: types.Message):
 @router.callback_query(F.data == 'menu_callback_data')
 async def menu_cb_handler(cb: types.CallbackQuery):
     await cb.message.edit_text(
-        text='',
+        text='Menu',
         reply_markup=None,
         parse_mode=ParseMode.HTML
     )

@@ -3,33 +3,32 @@ from sqlalchemy import select
 from db.config import async_session, engine
 from db.models import User, Base
 
-
 async def init_db():
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
 
 
-async def get_all_admins():
-    async with async_session() as session:
-        query = select(User).filter_by(is_admin=1)
-        resutl = await session.execute(query)
-        return resutl.scalars().all()
-    
-
-async def get_users():
-    async with async_session() as session:
-        query = select(User).filter_by(is_admin=0)
-        resutl = await session.execute(query)
-        return resutl.scalars().all()
-    
-
-async def get_user_by_id(user_id: int):
-    async with async_session() as session:
-        query = select(User).filter_by(user_id=user_id)
-        result = await session.execute(query)
-        return result.scalar_one_or_none()
-
-
-async def register_user(user_id: int, username):
+async def get_all_users():
     async with async_session() as session:
         query = select(User)
+        resutl = await session.execute(query)
+        return resutl.scalars().all()
+
+
+async def register_user(userid: int, username: str = None, first_name: str = None, last_name: str = None):
+    async with async_session() as session:
+        # Check user if existing
+        query = select(User).filter_by(userid=userid)
+        result = await session.execute(query)
+        exist_user = result.scalar_one_or_none()
+        if exist_user:
+            return
+
+        new_user = User(
+            userid=userid,
+            username=username if username else '-',
+            first_name=first_name if first_name else '-',
+            last_name=last_name if last_name else '-',
+        )
+        session.add(new_user)
+        await session.commit()
