@@ -32,3 +32,13 @@ async def register_user(userid: int, username: str = None, first_name: str = Non
         )
         session.add(new_user)
         await session.commit()
+
+    
+async def get_user_lang(userid: int):
+    async with async_session() as session:
+        query = select(User).filter_by(userid=userid)
+        result = await session.execute(query)
+        user = result.scalar_one_or_none()
+        if not user:
+            return
+        return user.language

@@ -11,6 +11,7 @@ from handlers.users import (
     echo,
     cancel,
 )
+from middleware.I18nMiddleware import i18n_middleware
 from utils.notify import notify_admins
 from utils.bot_commands import set_bot_commands
 
@@ -35,6 +36,7 @@ async def configure():
 
     dp.startup.register(on_startup)
     dp.shutdown.register(on_shutdown)
+    dp.update.middleware.register(i18n_middleware)
 
     await set_bot_commands(bot=bot)
     await bot.delete_webhook(drop_pending_updates=True)
