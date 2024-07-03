@@ -1,10 +1,11 @@
 from aiogram import Router, types
+from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
 from aiogram.enums.parse_mode import ParseMode
 
 router = Router()
 
-@router.message()
+@router.message(Command('cancel'))
 async def cancel_handler(msg: types.Message, state: FSMContext):
     st = await state.get_state()
     if st is not None:

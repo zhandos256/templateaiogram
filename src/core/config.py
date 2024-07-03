@@ -5,6 +5,7 @@ import sys
 from aiogram import Bot, Dispatcher
 
 from core.const import TOKEN, DEBUG
+from handlers.admin import admin
 from handlers.users import (
     start,
     help,
@@ -30,6 +31,7 @@ async def configure():
     dp.include_routers(
         start.router,
         help.router,
+        admin.router,
         cancel.router,
         echo.router,
     )
