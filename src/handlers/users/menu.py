@@ -4,7 +4,6 @@ from aiogram.enums.parse_mode import ParseMode
 
 router = Router()
 
-
 @router.message(Command('menu'))
 async def menu_msg_handler(msg: types.Message):
     await msg.answer(

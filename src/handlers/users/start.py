@@ -6,7 +6,6 @@ from keyboards.inline.menu import inline_menu_keyboard
 
 router = Router()
 
-
 @router.message(Command('start'))
 async def start_msg_handler(msg: types.Message):
     await msg.answer(

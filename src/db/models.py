@@ -5,7 +5,6 @@ from sqlalchemy.orm import Mapped, mapped_column
 
 from db.config import Base
 
-
 class User(Base):
     __tablename__ = 'Users'
 
@@ -16,5 +15,5 @@ class User(Base):
     first_name: Mapped[str] =  mapped_column(Integer, default='-')
     last_name: Mapped[str] =  mapped_column(Integer, default='-')
     language: Mapped[str] =  mapped_column(String, default='ru')
-    phone: Mapped[int] = mapped_column(Integer, nullable=False)
     is_admin: Mapped[int] = mapped_column(Integer, default=0)
+    subscription: Mapped[int] = mapped_column(Integer, default=0)

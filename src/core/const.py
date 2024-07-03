@@ -1,5 +1,8 @@
+from pathlib import Path
 from os import environ
 
 DEBUG = 0
-TOKEN = environ.get('TOKEN')
-DB_URL = 'postgresql+asyncpg://postgres:123@localhost:5432/postgres1'
+TOKEN = environ.get('TEST_BOT_TOKEN')
+BASE_DIR = Path(__file__).parent.parent
+DB_PATH = BASE_DIR / 'db.sqlite'
+DB_URL = f'sqlite+aiosqlite:///{DB_PATH}'

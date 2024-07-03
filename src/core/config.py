@@ -10,8 +10,10 @@ from handlers.users import (
     start,
     help,
     echo,
+    cancel,
 )
 from utils.notify import notify_admins
+from utils.bot_commands import set_bot_commands
 
 
 async def on_startup(bot: Bot):
@@ -31,12 +33,14 @@ async def configure():
     dp.include_routers(
         start.router,
         help.router,
+        cancel.router,
         echo.router,
     )
 
     dp.startup.register(on_startup)
     dp.shutdown.register(on_shutdown)
 
+    await set_bot_commands(bot=bot)
     await bot.delete_webhook(drop_pending_updates=True)
     await dp.start_polling(bot)
 

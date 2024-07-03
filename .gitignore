@@ -3,6 +3,7 @@
 env
 venv
 .vscode
-.sqlite
+*.sqlite
 *.log
 *.tmp
+.DS_Store
