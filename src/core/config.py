@@ -5,7 +5,6 @@ import sys
 from aiogram import Bot, Dispatcher
 
 from core.const import TOKEN, DEBUG
-from db.query import init_db
 from handlers.users import (
     start,
     help,
@@ -16,7 +15,6 @@ from utils.notify import notify_admins
 from utils.bot_commands import set_bot_commands
 
 async def on_startup(bot: Bot):
-    await init_db()
     await notify_admins(bot=bot, text='Бот запущен!')
 
 
