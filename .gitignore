@@ -1,4 +1,8 @@
 .env
-.vscode
+env
+venv
+*.tmp
+*.log
 *.sqlite
+.vscode
 .DS_Store
