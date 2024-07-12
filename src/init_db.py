@@ -2,6 +2,7 @@ import asyncio
 
 from db.query import init_db
 
+
 async def main():
     await init_db()
 

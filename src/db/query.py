@@ -1,7 +1,8 @@
 from sqlalchemy import select
 
 from db.config import async_session, engine
-from db.models import User, Base
+from db.models import Base, User
+
 
 async def init_db():
     async with engine.begin() as conn:
@@ -33,7 +34,7 @@ async def register_user(userid: int, username: str = None, first_name: str = Non
         session.add(new_user)
         await session.commit()
 
-    
+
 async def get_user_lang(userid: int):
     async with async_session() as session:
         query = select(User).filter_by(userid=userid)

@@ -1,11 +1,12 @@
-from aiogram import Router, F, types
-from aiogram.filters import Command
+from aiogram import F, Router, types
 from aiogram.enums.parse_mode import ParseMode
+from aiogram.filters import Command
 
 from db.query import register_user
 from keyboards.inline.menu import inline_menu_keyboard
 
 router = Router()
+
 
 @router.message(Command('start'))
 async def start_msg_handler(msg: types.Message):
