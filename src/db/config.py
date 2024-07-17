@@ -2,7 +2,7 @@ from sqlalchemy.ext.asyncio import (AsyncSession, async_sessionmaker,
                                     create_async_engine)
 from sqlalchemy.orm import DeclarativeBase
 
-from core.const import SQLITE_URL, POSTGRES_URL
+from core.const import DB_URL
 
 
 engine = create_async_engine(url=DB_URL, echo=True)
