@@ -21,7 +21,7 @@ async def on_shutdown(bot: Bot):
 
 
 async def configure():
-    bot = Bot(token=TOKEN)
+    bot = Bot(token=TOKEN if TOKEN else 'define me')
     dp = Dispatcher()
 
     dp.include_routers(
