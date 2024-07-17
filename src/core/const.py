@@ -1,5 +1,5 @@
-from pathlib import Path
 from os import environ
+from pathlib import Path
 
 DEBUG = 0
 TOKEN = environ.get('TEST_BOT_TOKEN')

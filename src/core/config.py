@@ -4,17 +4,13 @@ import sys
 
 from aiogram import Bot, Dispatcher
 
-from core.const import TOKEN, DEBUG
+from core.const import DEBUG, TOKEN
 from handlers.admin import admin
-from handlers.users import (
-    start,
-    help,
-    echo,
-    cancel,
-)
+from handlers.users import cancel, echo, help, start
 from middleware.I18nMiddleware import i18n_middleware
-from utils.notify import notify_admins
 from utils.bot_commands import set_bot_commands
+from utils.notify import notify_admins
+
 
 async def on_startup(bot: Bot):
     await notify_admins(bot=bot, text='Бот запущен!')
@@ -25,7 +21,7 @@ async def on_shutdown(bot: Bot):
 
 
 async def configure():
-    bot = Bot(token=TOKEN)
+    bot = Bot(token=TOKEN if TOKEN else 'define me')
     dp = Dispatcher()
 
     dp.include_routers(
@@ -45,12 +41,13 @@ async def configure():
     try:
         await dp.start_polling(bot)
     except Exception as e:
-         logging.exception(e)
+        logging.exception(e)
     finally:
         await dp.storage.close()
         await bot.session.close()
 
 
 def main():
-    logging.basicConfig(level=logging.INFO if not DEBUG else logging.DEBUG, stream=sys.stdout)
+    logging.basicConfig(
+        level=logging.INFO if not DEBUG else logging.DEBUG, stream=sys.stdout)
     asyncio.run(configure())

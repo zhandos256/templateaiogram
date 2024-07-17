@@ -5,6 +5,7 @@ from aiogram.filters import BaseFilter
 
 from db.query import get_all_users
 
+
 class IsAdminMsg(BaseFilter):
     async def __call__(self, msg: types.Message):
         users = await get_all_users()

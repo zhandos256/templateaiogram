@@ -1,8 +1,9 @@
 from aiogram import Router, types
-from aiogram.fsm.context import FSMContext
 from aiogram.enums.parse_mode import ParseMode
+from aiogram.fsm.context import FSMContext
 
 router = Router()
+
 
 @router.message()
 async def echo_msg_handler(msg: types.Message, state: FSMContext):

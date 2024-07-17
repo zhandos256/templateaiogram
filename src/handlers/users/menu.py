@@ -1,8 +1,9 @@
-from aiogram import Router, F, types
-from aiogram.filters import Command
+from aiogram import F, Router, types
 from aiogram.enums.parse_mode import ParseMode
+from aiogram.filters import Command
 
 router = Router()
+
 
 @router.message(Command('menu'))
 async def menu_msg_handler(msg: types.Message):
