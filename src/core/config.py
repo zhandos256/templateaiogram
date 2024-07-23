@@ -4,7 +4,7 @@ import sys
 
 from aiogram import Bot, Dispatcher
 
-from core.const import DEBUG, TOKEN
+from core.const import DEBUG, BOT_TOKEN
 from handlers.admin import admin
 from handlers.users import cancel, echo, help, start
 from middleware.I18nMiddleware import i18n_middleware
@@ -21,7 +21,7 @@ async def on_shutdown(bot: Bot):
 
 
 async def configure():
-    bot = Bot(token=TOKEN if TOKEN else 'define me')
+    bot = Bot(token=BOT_TOKEN if BOT_TOKEN else 'define me')
     dp = Dispatcher()
 
     dp.include_routers(
