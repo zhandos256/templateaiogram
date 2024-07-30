@@ -10,7 +10,7 @@ from db.config import Base
 class User(Base):
     __tablename__ = 'Users'
 
-    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
     created: Mapped[datetime] = mapped_column(DateTime, default=datetime.today())
     userid: Mapped[int] = mapped_column(Integer, unique=True)
     username: Mapped[str] = mapped_column(String(length=32), default='-')

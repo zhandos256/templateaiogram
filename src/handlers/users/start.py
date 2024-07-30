@@ -17,8 +17,13 @@ async def start_msg_handler(msg: types.Message):
         first_name=msg.from_user.first_name,
         last_name=msg.from_user.last_name
     )
+    templtae = [
+        'Шаблонное приветствие\n',
+        'Поменяй меня на другой текст\n',
+        'Исходники - https://github.com/zhandos256/templateaiogram\n',
+    ]
     await msg.answer(
-        text='Start',
+        text='\n'.join(templtae),
         reply_markup=await menu_kb(),
         parse_mode=ParseMode.HTML
     )

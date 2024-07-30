@@ -8,6 +8,7 @@ from core.const import DEBUG, BOT_TOKEN
 from handlers.admin import admin
 from handlers.users import (
     cancel, 
+    about,
     settings,
     lang,
     echo, 
@@ -29,7 +30,7 @@ async def on_shutdown(bot: Bot):
 
 
 async def configure():
-    bot = Bot(token=BOT_TOKEN if BOT_TOKEN else 'define me')
+    bot = Bot(token=BOT_TOKEN if BOT_TOKEN else 'DEFINE ME!')
     dp = Dispatcher()
 
     dp.include_routers(
@@ -37,6 +38,7 @@ async def configure():
         help.router,
         menu.router,
         settings.router,
+        about.router,
         lang.router,
         admin.router,
         cancel.router,
