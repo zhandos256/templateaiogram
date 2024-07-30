@@ -2,7 +2,7 @@ from os import getenv
 from pathlib import Path
 
 DEBUG = 0
-BOT_TOKEN = getenv('DEFINE ME!')
+BOT_TOKEN = getenv('BOT_TOKEN')
 BASE_DIR = Path(__file__).parent.parent
 LOCALES_DIR = BASE_DIR / 'locales'
 DB_PATH = BASE_DIR / 'db.sqlite'
