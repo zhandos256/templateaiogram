@@ -43,3 +43,14 @@ async def get_user_lang(userid: int):
         if not user:
             return
         return user.language
+
+
+async def update_user_lang(userid: int, value: str):
+    async with async_session() as session:
+        query = select(User).filter_by(userid=userid)
+        result = await session.execute(query)
+        user = result.scalar_one_or_none()
+        if not user:
+            return
+        user.language = value
+        await session.commit()
