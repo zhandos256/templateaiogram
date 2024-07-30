@@ -13,33 +13,53 @@
 ## Настройка
 
 1. **Клонируйте репозиторий**:
-```bash
-git clone https://github.com/zhandos256/templateaiogram.git
-cd templateaiogram
-```
+
+    ```bash
+    git clone https://github.com/zhandos256/templateaiogram.git
+    cd templateaiogram
+    ```
 
 2. **Добавляем доступ на выполнению скриптам**:
-```bash
-sudo chmod +x init.sh run.sh
-```
+
+    ```bash
+    sudo chmod +x init.sh run.sh
+    ```
 
 3. **Установка зависисмостей и инициализация базы данных**:
-```bash
-./init.sh
-```
-> init.sh запускается всего 1 раз
 
-> Что делает init.sh:
-> - Создает новый python environment
-> - Устанавливает зависисмости из requirements.txt
-> - Инициализирует таблицы базы данных (по умолчанию sqlite+aiosqlite)
-> - Накатывает начальную миграцию (по умолчанию alembic)
+    Запустите init.sh
 
+    ```bash
+    ./init.sh
+    ```
+    > init.sh запускается всего 1 раз
 
-4. **Для запуска бота**:
-```bash
-./run.sh
-```
+    > Что делает init.sh:
+    > - Создает новый python environment
+    > - Устанавливает зависисмости из requirements.txt
+    > - Инициализирует таблицы базы данных (по умолчанию sqlite+aiosqlite)
+    > - Накатывает начальную миграцию (по умолчанию alembic)
+
+4. **Настройка переменной окружения BOT_TOKEN**:
+
+    Установите переменную окружения BOT_TOKEN в вашей системе.
+    - На Windows:
+        ```
+        set BOT_TOKEN=YOUR_BOT_TOKEN
+        ```
+    - На macOS и Linux:
+        ```
+        export BOT_TOKEN=YOUR_BOT_TOKEN
+        ```
+    Замените YOUR_BOT_TOKEN на ваш реальный токен, который вы получили от @BotFather.
+
+5. **Для запуска бота**:
+
+    Для запуска бота выполните run.sh
+
+    ```bash
+    source run.sh
+    ```
 
 ## Лицензия
 
