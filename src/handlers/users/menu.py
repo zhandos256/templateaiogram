@@ -2,6 +2,7 @@ from aiogram import F, Router, types
 from aiogram.enums.parse_mode import ParseMode
 from aiogram.filters import Command
 
+
 router = Router()
 
 
@@ -14,7 +15,7 @@ async def menu_msg_handler(msg: types.Message):
     )
 
 
-@router.callback_query(F.data == 'menu_callback_data')
+@router.callback_query(F.data == 'menu')
 async def menu_cb_handler(cb: types.CallbackQuery):
     await cb.message.edit_text(
         text='Menu',

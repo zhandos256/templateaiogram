@@ -6,7 +6,15 @@ from aiogram import Bot, Dispatcher
 
 from core.const import DEBUG, BOT_TOKEN
 from handlers.admin import admin
-from handlers.users import cancel, echo, help, start
+from handlers.users import (
+    cancel, 
+    settings,
+    lang,
+    echo, 
+    help, 
+    start,
+    menu,
+)
 from middleware.I18nMiddleware import i18n_middleware
 from utils.bot_commands import set_bot_commands
 from utils.notify import notify_admins
@@ -27,6 +35,9 @@ async def configure():
     dp.include_routers(
         start.router,
         help.router,
+        menu.router,
+        settings.router,
+        lang.router,
         admin.router,
         cancel.router,
         echo.router,
