@@ -2,13 +2,13 @@ from aiogram import  Router, types
 from aiogram.enums.parse_mode import ParseMode
 from aiogram.filters import Command
 
-from filters.AdminFilters import IsAdminMsg
+from filters.AdminFilters import IsAdmin
 
 
 router = Router()
 
 
-@router.message(IsAdminMsg(), Command('admin'))
+@router.message(IsAdmin(), Command('admin'))
 async def admin_msg_handler(msg: types.Message):
     template = [
         'Админ панель\n',

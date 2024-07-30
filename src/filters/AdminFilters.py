@@ -1,20 +1,21 @@
-from typing import Any
+from typing import Union
 
 from aiogram import types
 from aiogram.filters import BaseFilter
 
 from db.query import get_all_users
 
-
-class IsAdminMsg(BaseFilter):
-    async def __call__(self, msg: types.Message):
+class IsAdmin(BaseFilter):
+    async def __call__(self, obj: Union[types.Message, types.CallbackQuery]) -> bool:
         users = await get_all_users()
-        if users is not None:
-            return True if msg.from_user.id in [user.userid for user in users if user.is_admin] else False
+        if users is None:
+            return False
+        
+        user_id = None
+        
+        if isinstance(obj, types.Message):
+            user_id = obj.from_user.id
+        elif isinstance(obj, types.CallbackQuery):
+            user_id = obj.from_user.id
 
-
-class IsAdminCb(BaseFilter):
-    async def __call__(self, cb: types.CallbackQuery):
-        users = await get_all_users()
-        if users is not None:
-            return True if cb.from_user.id in [user.userid for user in users if user.is_admin] else False
+        return user_id in [user.userid for user in users if user.is_admin]
