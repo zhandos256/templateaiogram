@@ -9,7 +9,7 @@ router = Router()
 
 
 @router.message(Command('menu'))
-async def menu_msg_handler(msg: types.Message):
+async def menu_msg(msg: types.Message):
     templtae = [
         'Шаблонное приветствие\n',
         'Поменяй меня на другой текст\n',
@@ -23,13 +23,13 @@ async def menu_msg_handler(msg: types.Message):
 
 
 @router.callback_query(F.data == 'menu')
-async def menu_cb_handler(cb: types.CallbackQuery):
+async def menu_cb(call: types.CallbackQuery):
     templtae = [
         'Шаблонное приветствие\n',
         'Поменяй меня на другой текст\n',
         'Исходники - https://github.com/zhandos256/templateaiogram\n',
     ]
-    await cb.message.edit_text(
+    await call.message.edit_text(
         text='\n'.join(templtae),
         reply_markup=await menu_kb(),
         parse_mode=ParseMode.HTML
