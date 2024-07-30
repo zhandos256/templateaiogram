@@ -10,8 +10,8 @@ router = Router()
 
 
 @router.callback_query(F.data == 'lang')
-async def menu_cb_handler(cb: types.CallbackQuery):
-    await cb.message.edit_text(
+async def lang_cb(call: types.CallbackQuery):
+    await call.message.edit_text(
         text='Язык интерфейса',
         reply_markup=await lang_kb(),
         parse_mode=ParseMode.HTML
@@ -19,12 +19,12 @@ async def menu_cb_handler(cb: types.CallbackQuery):
 
 
 @router.callback_query(F.data.in_(['kk', 'ru']))
-async def menu_cb_handler(cb: types.CallbackQuery):
+async def menu_cb_handler(call: types.CallbackQuery):
     if F.data == 'kk':
-        await update_user_lang(userid=cb.from_user.id, value='kk')
+        await update_user_lang(userid=call.from_user.id, value='kk')
     else:
-        await update_user_lang(userid=cb.from_user.id, value='ru')
-    await cb.message.edit_text(
+        await update_user_lang(userid=call.from_user.id, value='ru')
+    await call.message.edit_text(
         text='✅ Язык интерфейса обновлен',
         reply_markup=await back_menu_kb(),
         parse_mode=ParseMode.HTML

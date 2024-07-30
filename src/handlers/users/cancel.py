@@ -1,9 +1,9 @@
-from aiogram import Router, types
+from aiogram import F, Router, types
 from aiogram.enums.parse_mode import ParseMode
 from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
 
-from keyboards.inline.cancel import cancel_kb
+
 from keyboards.inline.menu import back_menu_kb
 
 
@@ -11,7 +11,7 @@ router = Router()
 
 
 @router.message(Command('cancel'))
-async def cancel_handler(msg: types.Message, state: FSMContext):
+async def cancel_msg(msg: types.Message, state: FSMContext):
     st = await state.get_state()
     if st is not None:
         await msg.answer(
@@ -29,7 +29,7 @@ async def cancel_handler(msg: types.Message, state: FSMContext):
 
 
 @router.callback_query(F.data == 'cancel')
-async def cancel_handler(call: types.CallbackQuery, state: FSMContext):
+async def cancel_cb(call: types.CallbackQuery, state: FSMContext):
     st = await state.get_state()
     if st is not None:
         await call.message.edit_text(

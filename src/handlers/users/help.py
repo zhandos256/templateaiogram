@@ -9,18 +9,29 @@ router = Router()
 
 
 @router.message(Command('help'))
-async def help_msg_handler(msg: types.Message):
+async def help_msg(msg: types.Message):
+    template = [
+        'Шаблонное приветствие\n',
+        'Поменяй меня на другой текст\n',
+        'Исходники - https://github.com/zhandos256/templateaiogram\n',
+    ]
     await msg.answer(
-        text='Help',
+        text='\n'.join(template),
         reply_markup=await back_menu_kb(),
         parse_mode=ParseMode.HTML
     )
 
 
 @router.callback_query(F.data == 'help_callback_data')
-async def help_cb_handler(cb: types.CallbackQuery):
-    await cb.message.edit_text(
-        text='Help',
+async def help_cb(call: types.CallbackQuery):
+    template = [
+        'Помощь\n',
+        '/start - Старт бота',
+        '/help - Получить помощь',
+        '/start - Меню',
+    ]
+    await call.message.edit_text(
+        text='\n'.join(template),
         reply_markup=await back_menu_kb(),
         parse_mode=ParseMode.HTML
     )

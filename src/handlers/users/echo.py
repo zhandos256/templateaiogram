@@ -9,13 +9,16 @@ router = Router()
 
 
 @router.message()
-async def echo_msg_handler(msg: types.Message, state: FSMContext):
+async def echo_msg(msg: types.Message, state: FSMContext):
     st = await state.get_state()
     if st is not None:
         pass
     else:
+        template = [
+            'Извините, я не смог понять ваше сообщение. Используйте команду /help, чтобы увидеть доступные команды.',
+        ]
         await msg.answer(
-            text='Извините, я не смог понять ваше сообщение. Используйте команду /help, чтобы увидеть доступные команды.',
+            text='\n'.join(template),
             reply_markup=await back_menu_kb(),
             parse_mode=ParseMode.HTML
         )
