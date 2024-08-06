@@ -1,5 +1,4 @@
 from aiogram import F, Router, types
-from aiogram.enums.parse_mode import ParseMode
 
 from keyboards.inline.settings import settings_kg
 

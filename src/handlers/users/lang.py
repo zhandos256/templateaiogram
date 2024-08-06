@@ -1,5 +1,4 @@
 from aiogram import F, Router, types
-from aiogram.enums.parse_mode import ParseMode
 
 from db.query import update_user_lang
 from keyboards.inline.lang import lang_kb
