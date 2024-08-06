@@ -15,6 +15,5 @@ async def admin_msg_handler(msg: types.Message):
     ]
     await msg.answer(
         text='\n'.join(template),
-        reply_markup=None,
-        parse_mode=ParseMode.HTML
+        reply_markup=None
     )

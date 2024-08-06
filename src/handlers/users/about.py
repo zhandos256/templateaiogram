@@ -16,6 +16,5 @@ async def about(call: types.CallbackQuery):
     ]
     await call.message.edit_text(
         text='\n'.join(templtae),
-        reply_markup=await back_menu_kb(),
-        parse_mode=ParseMode.HTML
+        reply_markup=await back_menu_kb()
     )

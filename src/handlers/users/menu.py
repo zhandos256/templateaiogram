@@ -17,8 +17,7 @@ async def menu_msg(msg: types.Message):
     ]
     await msg.answer(
         text='\n'.join(templtae),
-        reply_markup=await menu_kb(),
-        parse_mode=ParseMode.HTML
+        reply_markup=await menu_kb()
     )
 
 
@@ -31,6 +30,5 @@ async def menu_cb(call: types.CallbackQuery):
     ]
     await call.message.edit_text(
         text='\n'.join(templtae),
-        reply_markup=await menu_kb(),
-        parse_mode=ParseMode.HTML
+        reply_markup=await menu_kb()
     )

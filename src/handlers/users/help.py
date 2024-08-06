@@ -17,8 +17,7 @@ async def help_msg(msg: types.Message):
     ]
     await msg.answer(
         text='\n'.join(template),
-        reply_markup=await back_menu_kb(),
-        parse_mode=ParseMode.HTML
+        reply_markup=await back_menu_kb()
     )
 
 
@@ -32,6 +31,5 @@ async def help_cb(call: types.CallbackQuery):
     ]
     await call.message.edit_text(
         text='\n'.join(template),
-        reply_markup=await back_menu_kb(),
-        parse_mode=ParseMode.HTML
+        reply_markup=await back_menu_kb()
     )

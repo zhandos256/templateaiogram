@@ -13,8 +13,7 @@ router = Router()
 async def lang_cb(call: types.CallbackQuery):
     await call.message.edit_text(
         text='Язык интерфейса',
-        reply_markup=await lang_kb(),
-        parse_mode=ParseMode.HTML
+        reply_markup=await lang_kb()
     )
 
 
@@ -26,6 +25,5 @@ async def menu_cb_handler(call: types.CallbackQuery):
         await update_user_lang(userid=call.from_user.id, value='ru')
     await call.message.edit_text(
         text='✅ Язык интерфейса обновлен',
-        reply_markup=await back_menu_kb(),
-        parse_mode=ParseMode.HTML
+        reply_markup=await back_menu_kb()
     )
