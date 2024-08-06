@@ -16,15 +16,13 @@ async def cancel_msg(msg: types.Message, state: FSMContext):
     if st is not None:
         await msg.answer(
             text='❌ Операция отменена!',
-            reply_markup=await back_menu_kb(),
-            parse_mode=ParseMode.HTML
+            reply_markup=await back_menu_kb()
         )
         await state.clear()
     else:
         await msg.answer(
             text='❕ Нечего отменять',
-            reply_markup=await back_menu_kb(),
-            parse_mode=ParseMode.HTML
+            reply_markup=await back_menu_kb()
         )
 
 
@@ -34,8 +32,7 @@ async def cancel_cb(call: types.CallbackQuery, state: FSMContext):
     if st is not None:
         await call.message.edit_text(
             text='❌ Операция отменена!',
-            reply_markup=await back_menu_kb(),
-            parse_mode=ParseMode.HTML
+            reply_markup=await back_menu_kb()
         )
         await state.clear()
     else:

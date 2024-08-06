@@ -24,6 +24,5 @@ async def start_msg_handler(msg: types.Message):
     ]
     await msg.answer(
         text='\n'.join(templtae),
-        reply_markup=await menu_kb(),
-        parse_mode=ParseMode.HTML
+        reply_markup=await menu_kb()
     )

@@ -19,6 +19,5 @@ async def echo_msg(msg: types.Message, state: FSMContext):
         ]
         await msg.answer(
             text='\n'.join(template),
-            reply_markup=await back_menu_kb(),
-            parse_mode=ParseMode.HTML
+            reply_markup=await back_menu_kb()
         )

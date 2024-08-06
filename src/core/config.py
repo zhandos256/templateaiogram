@@ -3,6 +3,7 @@ import logging
 import sys
 
 from aiogram import Bot, Dispatcher
+from aiogram.enums.parse_mode import ParseMode
 
 from core.const import DEBUG, BOT_TOKEN
 from handlers.admin import admin
@@ -30,7 +31,7 @@ async def on_shutdown(bot: Bot):
 
 
 async def configure():
-    bot = Bot(token=BOT_TOKEN if BOT_TOKEN else 'DEFINE ME!')
+    bot = Bot(token=BOT_TOKEN if BOT_TOKEN else 'DEFINE ME!', parse_mode=ParseMode.HTML)
     dp = Dispatcher()
 
     dp.include_routers(
