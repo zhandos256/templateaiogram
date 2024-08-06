@@ -23,3 +23,5 @@ python init_db.py
 # Create initial migrations
 alembic revision --autogenerate -m "initial"
 alembic upgrade head
+
+python main.py

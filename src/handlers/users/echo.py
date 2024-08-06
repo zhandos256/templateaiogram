@@ -1,5 +1,4 @@
 from aiogram import Router, types
-from aiogram.enums.parse_mode import ParseMode
 from aiogram.fsm.context import FSMContext
 
 from keyboards.inline.menu import back_menu_kb

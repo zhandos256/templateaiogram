@@ -1,5 +1,4 @@
 from aiogram import Router, types
-from aiogram.enums.parse_mode import ParseMode
 from aiogram.filters import Command
 
 from db.query import register_user

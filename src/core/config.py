@@ -31,7 +31,10 @@ async def on_shutdown(bot: Bot):
 
 
 async def configure():
-    bot = Bot(token=BOT_TOKEN if BOT_TOKEN else 'DEFINE ME!', parse_mode=ParseMode.HTML)
+    bot = Bot(
+        token=BOT_TOKEN if BOT_TOKEN else 'DEFINE ME!',
+        parse_mode=ParseMode.HTML
+    )
     dp = Dispatcher()
 
     dp.include_routers(
