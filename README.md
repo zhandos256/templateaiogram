@@ -4,7 +4,8 @@
 - **AioSQLite**: Асинхронный клиент для работы с SQLite.
 - **Alembic**: Инструмент для управления миграциями базы данных.
 - **Aiogram**: Фреймворк для разработки Telegram-ботов.
-- **Babel**: Фреймворк для локализации текста.
+- **Aioredis**: Key-value база данных для кэша.
+- **Babel**: Для локализации текста.
 
 ## Требования
 
@@ -45,11 +46,11 @@
     Установите переменную окружения BOT_TOKEN в вашей системе.
     - На Windows:
         ```
-        set BOT_TOKEN=YOUR_BOT_TOKEN
+        set BOT_TOKEN="YOUR_BOT_TOKEN"
         ```
     - На macOS и Linux:
         ```
-        export BOT_TOKEN=YOUR_BOT_TOKEN
+        export BOT_TOKEN="YOUR_BOT_TOKEN"
         ```
     Замените YOUR_BOT_TOKEN на ваш реальный токен, который вы получили от @BotFather.
 
