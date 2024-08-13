@@ -3,7 +3,6 @@ from aiogram.fsm.context import FSMContext
 
 from keyboards.inline.menu import back_menu_kb
 
-
 router = Router()
 
 
@@ -14,9 +13,6 @@ async def echo_msg(msg: types.Message, state: FSMContext):
         pass
     else:
         template = [
-            'Извините, я не смог понять ваше сообщение. Используйте команду /help, чтобы увидеть доступные команды.',
+            "Извините, я не смог понять ваше сообщение. Используйте команду /help, чтобы увидеть доступные команды.",
         ]
-        await msg.answer(
-            text='\n'.join(template),
-            reply_markup=await back_menu_kb()
-        )
+        await msg.answer(text="\n".join(template), reply_markup=await back_menu_kb())

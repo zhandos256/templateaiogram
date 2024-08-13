@@ -5,36 +5,25 @@ import sys
 from aiogram import Bot, Dispatcher
 from aiogram.enums.parse_mode import ParseMode
 
-from core.const import DEBUG, BOT_TOKEN
+from core.const import BOT_TOKEN, DEBUG
 from handlers.admin import admin
-from handlers.users import (
-    cancel, 
-    about,
-    settings,
-    lang,
-    echo, 
-    help, 
-    start,
-    menu,
-)
+from handlers.users import about, cancel, echo, help, lang, menu, settings, start
 from middleware.I18nMiddleware import i18n_middleware
 from utils.bot_commands import set_bot_commands
 from utils.notify import notify_admins
 
 
 async def on_startup(bot: Bot):
-    await notify_admins(bot=bot, text='Бот запущен!')
+    await notify_admins(bot=bot, text="Бот запущен!")
 
 
-async def on_shutdown(bot: Bot):
-    await notify_admins(bot=bot, text='Бот остановлен!')
+async def on_shutdown(bot: Bot, dp: Dispatcher):
+    await notify_admins(bot=bot, text="Бот остановлен!")
+    await bot.session.close()
 
 
 async def configure():
-    bot = Bot(
-        token=BOT_TOKEN if BOT_TOKEN else 'DEFINE ME!',
-        parse_mode=ParseMode.HTML
-    )
+    bot = Bot(token=BOT_TOKEN if BOT_TOKEN else "DEFINE ME!", parse_mode=ParseMode.HTML)
     dp = Dispatcher()
 
     dp.include_routers(
@@ -66,5 +55,6 @@ async def configure():
 
 def main():
     logging.basicConfig(
-        level=logging.INFO if not DEBUG else logging.DEBUG, stream=sys.stdout)
+        level=logging.INFO if not DEBUG else logging.DEBUG, stream=sys.stdout
+    )
     asyncio.run(configure())

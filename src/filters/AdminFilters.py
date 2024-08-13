@@ -5,14 +5,15 @@ from aiogram.filters import BaseFilter
 
 from db.query import get_all_users
 
+
 class IsAdmin(BaseFilter):
     async def __call__(self, obj: Union[types.Message, types.CallbackQuery]) -> bool:
         users = await get_all_users()
         if users is None:
             return False
-        
+
         user_id = None
-        
+
         if isinstance(obj, types.Message):
             user_id = obj.from_user.id
         elif isinstance(obj, types.CallbackQuery):

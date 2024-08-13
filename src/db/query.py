@@ -16,7 +16,9 @@ async def get_all_users():
         return resutl.scalars().all()
 
 
-async def register_user(userid: int, username: str = None, first_name: str = None, last_name: str = None):
+async def register_user(
+    userid: int, username: str = None, first_name: str = None, last_name: str = None
+):
     async with async_session() as session:
         # Check user if existing
         query = select(User).filter_by(userid=userid)
@@ -27,9 +29,9 @@ async def register_user(userid: int, username: str = None, first_name: str = Non
 
         new_user = User(
             userid=userid,
-            username=username if username else '-',
-            first_name=first_name if first_name else '-',
-            last_name=last_name if last_name else '-',
+            username=username if username else "-",
+            first_name=first_name if first_name else "-",
+            last_name=last_name if last_name else "-",
         )
         session.add(new_user)
         await session.commit()
