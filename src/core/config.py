@@ -17,9 +17,8 @@ async def on_startup(bot: Bot):
     await notify_admins(bot=bot, text="Бот запущен!")
 
 
-async def on_shutdown(bot: Bot, dp: Dispatcher):
+async def on_shutdown(bot: Bot):
     await notify_admins(bot=bot, text="Бот остановлен!")
-    await bot.session.close()
 
 
 async def configure():
